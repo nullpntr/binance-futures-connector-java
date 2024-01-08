@@ -148,6 +148,13 @@ public abstract class Account {
         return requestHandler.sendSignedRequest(productUrl, ORDER, parameters, HttpMethod.POST, showLimitUsage);
     }
 
+    public String modifyOrder(LinkedHashMap<String, Object> parameters) {
+        ParameterChecker.checkParameter(parameters, "symbol", String.class);
+        ParameterChecker.checkParameter(parameters, "side", String.class);
+        ParameterChecker.checkParameter(parameters, "type", String.class);
+        return requestHandler.sendSignedRequest(productUrl, ORDER, parameters, HttpMethod.PUT, showLimitUsage);
+    }
+
     private final String BATCH_ORDERS = "/v1/batchOrders";
     /**
      * Send in a new order.
