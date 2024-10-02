@@ -178,6 +178,11 @@ public abstract class Account {
         return requestHandler.sendSignedRequest(productUrl, BATCH_ORDERS, parameters, HttpMethod.POST, showLimitUsage);
     }
 
+    public String modifyMultipleOrders(LinkedHashMap<String, Object> parameters) {
+        ParameterChecker.checkRequiredParameter(parameters, "batchOrders");
+        return requestHandler.sendSignedRequest(productUrl, BATCH_ORDERS, parameters, HttpMethod.PUT, showLimitUsage);
+    }
+
     /**
      * Check an order's status.
      * <br><br>
